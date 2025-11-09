@@ -1,0 +1,13 @@
+service: otp-backend
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  api:
+    handler: src/server.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
