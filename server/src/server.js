@@ -4,13 +4,13 @@ const cors = require('cors');
 const connectDB = require('./config/documentdb');
 const authRoutes = require('./routes/auth');
 
-// connectDB();
+connectDB();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
+app.use('/api/V1/auth', authRoutes);
 
 app.get('/', (req, res) => res.json({ message: 'OTP Backend Live' }));
 

@@ -1,14 +1,12 @@
+// models/User.js
 const mongoose = require('mongoose');
 
-// const userSchema = new mongoose.Schema({
-//   phone: { type: String, required: true, unique: true },
-//   cognitoSub: String,
-//   email: String,
-//   createdAt: { type: Date, default: Date.now },
-// });
 const userSchema = new mongoose.Schema({
-  phone: { type: String, required: true, unique: true },
-  code: Number,
+  countryCode: String,
+  mobile: { type: String, unique: true },
+  role: { type: String, enum: ['user', 'driver'] },
+  refreshToken: String,
   createdAt: { type: Date, default: Date.now },
 });
+
 module.exports = mongoose.model('User', userSchema);
