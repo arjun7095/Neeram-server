@@ -1,10 +1,12 @@
+// models/OTP.js
 const mongoose = require('mongoose');
 
 const otpSchema = new mongoose.Schema({
-countryCode: { type: String, required: true },
-  mobile: { type: String, required: true },
-  role: { type: String, required: true },
-  otp: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now, expires: '2m' },
+  countryCode: String,
+  mobile: String,
+  role: { type: String, enum: ['user', 'partner'] },
+  otp: String,
+  expiresAt: { type: Date, default: () => Date.now() + 2 * 60 * 1000 }, // 2 min
 });
+
 module.exports = mongoose.model('OTP', otpSchema);
